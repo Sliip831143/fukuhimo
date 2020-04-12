@@ -13,7 +13,7 @@ export default function MyApp(props) {
       <Head>
         <title>福路</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
