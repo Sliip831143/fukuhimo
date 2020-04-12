@@ -11,5 +11,4 @@ export default App;
 const StyledMain = styled.main`
   width: 100%;
   height: 100%;
-  background-color: #FBCC44;
 `;

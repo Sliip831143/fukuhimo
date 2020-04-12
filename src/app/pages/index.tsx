@@ -1,4 +1,5 @@
-import App from '../components/App';
+import App from '../components/pages/App';
+import ThemeChangeButton from '../components/atoms/ThemeChangeButton';
 import styled from 'styled-components';
 
 const text = [['福', '路'], ['美', '穂', '子', 'の'], ['ヒ', 'モ', 'に'], ['な', 'り', 'た', 'い']];
@@ -6,6 +7,7 @@ const text = [['福', '路'], ['美', '穂', '子', 'の'], ['ヒ', 'モ', 'に'
 export default () => (
   <App>
     <Area>
+    <ThemeChangeButton />
       <Nene src="/nene.png" />
       <Box>
         <div>
@@ -26,9 +28,13 @@ export default () => (
 const Area = styled.div`
   height: 100%;
   display: flex;
+  position: relative;
+  background-color: #FBCC44;
   @media(max-width: 480px) {
-    position: relative;
     flex-direction: column;
+  }
+  @media(prefers-color-scheme: dark) {
+    background-color: #364156;
   }
 `;
 

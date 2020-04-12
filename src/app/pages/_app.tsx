@@ -11,7 +11,7 @@ export default function MyApp(props) {
   return (
     <Fragment>
       <Head>
-        <title>福路</title>
+        <title>福路美穂子のヒモになりたい</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
       </Head>
