@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Consolelog from '../atom/Consolelog';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import EmojiObjectsTwoToneIcon from '@material-ui/icons/EmojiObjectsTwoTone';
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -12,9 +13,8 @@ const App = ({ children }: { children?: any }) => {
     <StyledMain className={theme}>
       <StyledToggleButton
         value="check"
-        theme={theme}
         onChange={() => {
-          setTheme((window.matchMedia('(prefers-color-scheme: dark)').matches === false &&
+          setTheme((!window.matchMedia('(prefers-color-scheme: dark)').matches &&
             theme === '' || theme === 'light') ? 'dark' : 'light'
           );
         }}
@@ -27,6 +27,7 @@ const App = ({ children }: { children?: any }) => {
         }
       </StyledToggleButton>
       {children}
+      <Consolelog />
     </StyledMain>
   );
 }

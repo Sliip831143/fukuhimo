@@ -1,7 +1,9 @@
 import App from '../components/pages/App';
 import styled from 'styled-components';
 
-const text = [['福', '路'], ['美', '穂', '子', 'の'], ['ヒ', 'モ', 'に'], ['な', 'り', 'た', 'い']];
+const jpText = [['福', '路'], ['美', '穂', '子', 'の'], ['ヒ', 'モ', 'に'], ['な', 'り', 'た', 'い']];
+// const enText = [['I WANT'], ['TO BE A MAN'], ['KEPT BY'], ['MIHOKO FUKUJI']];
+// const zhText = [['我', '想', '成', '为'], ['福', '路'], ['美', '穂', '子', '的'], ['皮', '条', '客', '男', '人']];
 
 export default () => (
   <App>
@@ -12,7 +14,7 @@ export default () => (
           <div>
             {Array(4).fill(null).map((n, i) => {
               return (<StyledP key={i}>
-                {text[i].map((t, i) => {return <span key={i}>{t}</span>})}
+                {jpText[i].map((t, i) => {return <span key={i}>{t}</span>})}
               </StyledP>)
             })}
           </div>
