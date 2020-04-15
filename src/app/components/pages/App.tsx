@@ -1,34 +1,37 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Consolelog from '../atom/Consolelog';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import EmojiObjectsTwoToneIcon from '@material-ui/icons/EmojiObjectsTwoTone';
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import { StylesProvider } from '@material-ui/core/styles';
 import styled from 'styled-components';
 
-const App = ({ children }: { children?: any }) => {
+const App: FC<{ children: any }> = ({ children }) => {
   const [theme, setTheme] = useState('');
   let darkModeOn;
 
   return (
-    <StyledMain className={theme}>
-      <StyledToggleButton
-        value="check"
-        onChange={() => {
-          setTheme((!window.matchMedia('(prefers-color-scheme: dark)').matches &&
-            theme === '' || theme === 'light') ? 'dark' : 'light'
-          );
-        }}
-      >
-        {typeof window !== 'undefined' &&
-          (darkModeOn = window.matchMedia('(prefers-color-scheme: dark)').matches,
-            theme === '' ? (darkModeOn ? <DarkBulbIcon /> : <LightBulbIcon />) :
-              (theme === 'light' ? <LightBulbIcon /> : <DarkBulbIcon />)
-          )
-        }
-      </StyledToggleButton>
-      {children}
-      <Consolelog />
-    </StyledMain>
+    <StylesProvider injectFirst>
+      <StyledMain className={theme}>
+        <StyledToggleButton
+          value="check"
+          onChange={() => {
+            setTheme((!window.matchMedia('(prefers-color-scheme: dark)').matches &&
+              theme === '' || theme === 'light') ? 'dark' : 'light'
+            );
+          }}
+        >
+          {typeof window !== 'undefined' &&
+            (darkModeOn = window.matchMedia('(prefers-color-scheme: dark)').matches,
+              theme === '' ? (darkModeOn ? <DarkBulbIcon /> : <LightBulbIcon />) :
+                (theme === 'light' ? <LightBulbIcon /> : <DarkBulbIcon />)
+            )
+          }
+        </StyledToggleButton>
+        {children}
+        <Consolelog />
+      </StyledMain>
+    </StylesProvider>
   );
 }
 
@@ -56,13 +59,13 @@ const StyledToggleButton = styled(ToggleButton)`
   width: 2rem;
   height: 2rem;
   background-color: #FFF;
-  border-radius: 0 !important;
+  border-radius: 0;
   z-index: 1;
   &:hover {
     background-color: #F5F5F5;
   }
   &.Mui-selected {
-    background-color: #FFF !important;
+    background-color: #FFF;
   }
 `;
 
