@@ -61,6 +61,7 @@ const StyledToggleButton = styled(ToggleButton)`
   background-color: #FFF;
   border-radius: 0;
   z-index: 1;
+  border: none;
   &:hover {
     background-color: #F5F5F5;
   }
