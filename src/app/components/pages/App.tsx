@@ -46,9 +46,11 @@ const StyledMain = styled.main`
   }
   &.light {
     background-color: #FBCC44 !important;
+    transition: .3s;
   }
   &.dark {
     background-color: #364156 !important;
+    transition: .3s;
   }
 `;
 
