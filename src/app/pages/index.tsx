@@ -13,14 +13,10 @@ const titleText = [
   [['我', '想', '成', '为'], ['福', '路'], ['美', '穂', '子', '的'], ['皮', '条', '客', '男', '人']],
   [['I WANT'], ['TO BE A MAN'], ['KEPT BY'], ['MIHOKO FUKUJI']]
 ];
-const agentLang = (typeof window !== 'undefined' && window.navigator.languages &&
-  window.navigator.languages[0].substr(0, 2) === 'zh' ? 1 :
-  window.navigator.languages[0].substr(0, 2) === 'en' ? 2 : 0
-);
 
 export default () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [langIdx, setLangIdx] = useState(agentLang ? agentLang : 0);
+  const [langIdx, setLangIdx] = useState(0);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
