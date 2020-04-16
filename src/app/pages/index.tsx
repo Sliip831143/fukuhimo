@@ -7,8 +7,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TranslateIcon from '@material-ui/icons/Translate';
 
-const languages = ['日本語', '中文', 'English'];
-const text = [
+const language = ['日本語', '中文', 'English'];
+const titleText = [
   [['福', '路'], ['美', '穂', '子', 'の'], ['ヒ', 'モ', 'に'], ['な', 'り', 'た', 'い']],
   [['我', '想', '成', '为'], ['福', '路'], ['美', '穂', '子', '的'], ['皮', '条', '客', '男', '人']],
   [['I WANT'], ['TO BE A MAN'], ['KEPT BY'], ['MIHOKO FUKUJI']]
@@ -21,7 +21,7 @@ export default () => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (e, i) => {
-    setLangIdx(i);
+    {i !== 'backdropClick' && setLangIdx(i)};
     setAnchorEl(null);
   };
 
@@ -59,7 +59,7 @@ export default () => {
             list: classes.list,
           }}
         >
-          {languages.map((d, i) =>
+          {language.map((d, i) =>
             <MenuItem
               key={d}
               onClick={(e) => handleClose(e, i)}
@@ -78,7 +78,7 @@ export default () => {
                     key={i}
                     style={{ justifyContent: `${langIdx === 2 ? 'center' : 'space-between'}` }}
                   >
-                    {text[langIdx][i].map((t, i) => {return <span key={i}>{t}</span>})}
+                    {titleText[langIdx][i].map((t, i) => {return <span key={i}>{t}</span>})}
                   </StyledP>
                 )
               })}
