@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TranslateIcon from '@material-ui/icons/Translate';
+import MenuContents from '../components/atom/MenuContents';
 
 const language = ['日本語', '中文', 'English'];
 const titleText = [
@@ -134,6 +135,7 @@ export default () => {
                 </div>
               </TitleBox>
               <MenuBox>
+                <MenuContents />
               </MenuBox>
             </Wrap>
           </div>
