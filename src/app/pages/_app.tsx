@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { StylesProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 
@@ -9,7 +9,7 @@ export default function MyApp(props) {
   const { Component, pageProps } = props;
 
   return (
-    <Fragment>
+    <StylesProvider injectFirst>
       <Head>
         <title>福路美穂子のヒモになりたい</title>
         <link rel="icon" href="/favicon.ico" />
@@ -20,7 +20,7 @@ export default function MyApp(props) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </Fragment>
+    </StylesProvider>
   );
 }
 

@@ -3,7 +3,6 @@ import Consolelog from '../atom/Consolelog';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import EmojiObjectsTwoToneIcon from '@material-ui/icons/EmojiObjectsTwoTone';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import { StylesProvider } from '@material-ui/core/styles';
 import styled from 'styled-components';
 
 const App: FC<{ children: any }> = ({ children }) => {
@@ -11,27 +10,25 @@ const App: FC<{ children: any }> = ({ children }) => {
   let darkModeOn;
 
   return (
-    <StylesProvider injectFirst>
-      <StyledMain className={theme}>
-        <StyledToggleButton
-          value="check"
-          onChange={() => {
-            setTheme((!window.matchMedia('(prefers-color-scheme: dark)').matches &&
-              theme === '' || theme === 'light') ? 'dark' : 'light'
-            );
-          }}
-        >
-          {typeof window !== 'undefined' &&
-            (darkModeOn = window.matchMedia('(prefers-color-scheme: dark)').matches,
-              theme === '' ? (darkModeOn ? <DarkBulbIcon /> : <LightBulbIcon />) :
-                (theme === 'light' ? <LightBulbIcon /> : <DarkBulbIcon />)
-            )
-          }
-        </StyledToggleButton>
-        {children}
-        <Consolelog />
-      </StyledMain>
-    </StylesProvider>
+    <StyledMain className={theme}>
+      <StyledToggleButton
+        value="check"
+        onChange={() => {
+          setTheme((!window.matchMedia('(prefers-color-scheme: dark)').matches &&
+            theme === '' || theme === 'light') ? 'dark' : 'light'
+          );
+        }}
+      >
+        {typeof window !== 'undefined' &&
+          (darkModeOn = window.matchMedia('(prefers-color-scheme: dark)').matches,
+            theme === '' ? (darkModeOn ? <DarkBulbIcon /> : <LightBulbIcon />) :
+              (theme === 'light' ? <LightBulbIcon /> : <DarkBulbIcon />)
+          )
+        }
+      </StyledToggleButton>
+      {children}
+      <Consolelog />
+    </StyledMain>
   );
 }
 
