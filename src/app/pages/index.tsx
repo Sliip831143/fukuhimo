@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TranslateIcon from '@material-ui/icons/Translate';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const language = ['日本語', '中文', 'English'];
 const titleText = [
@@ -18,9 +17,7 @@ const titleText = [
 export default () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [langIdx, setLangIdx] = useState(0);
-  const [wrapPos, setWrapPos] = useState({ touchX: 0, moveX: 0, touch: false });
-  const [spWrapPos, setSpWrapPos] = useState({ touchX: 0, moveX: 0, startPos: 0, touch: false });
-  const isMobile = useMediaQuery('(max-width: 480px)');
+  const [wrapPos, setWrapPos] = useState({ touchX: 0, moveX: 0, startPos: 0, touch: false });
 
   const dragStart = e => {
     setWrapPos({...wrapPos, touchX: e.clientX, touch: true });
@@ -38,26 +35,27 @@ export default () => {
   const droped = e => {
     if(!wrapPos.touch || e.clientX === wrapPos.touchX) return;
     if(wrapPos.touchX > e.clientX) {
-      setWrapPos({ moveX: -200, touchX: 0, touch: false });
+      setWrapPos({ moveX: -200, touchX: 0, startPos: 0, touch: false });
     } else {
-      setWrapPos({ moveX: 0, touchX: 0, touch: false });
+      setWrapPos({ moveX: 0, touchX: 0, startPos: 0, touch: false });
     }
   }
 
   const swipeStart = e => {
-    if(!e.touches || e.touches[0].clientX === spWrapPos.touchX) return;
-    setSpWrapPos({...spWrapPos, touchX: e.touches[0].clientX, startPos: e.touches[0].clientX, touch: true });
+    if(!e.touches || e.touches[0].clientX === wrapPos.touchX) return;
+    setWrapPos({...wrapPos, touchX: e.touches[0].clientX, startPos: e.touches[0].clientX, touch: true });
   }
   const swipeEnd = e => {
-    if(!spWrapPos.touch || !e.touches || spWrapPos.startPos === e.touches[0].clientX) return;
-    if(e.touches[0].clientX > spWrapPos.touchX) {
-      if(spWrapPos.moveX === 0 || (-200 + e.touches[0].clientX - spWrapPos.touchX) >= 0) return;
-      setSpWrapPos({ moveX: 0, touchX: 0, startPos: 0, touch: false });
+    if(!wrapPos.touch || !e.touches || wrapPos.startPos === e.touches[0].clientX) return;
+    if(e.touches[0].clientX > wrapPos.touchX) {
+      if(wrapPos.moveX === 0 || (-200 + e.touches[0].clientX - wrapPos.touchX) >= 0) return;
+      setWrapPos({ moveX: 0, touchX: 0, startPos: 0, touch: false });
     } else {
-      if(spWrapPos.moveX === -200 || (e.touches[0].clientX - spWrapPos.touchX) <= -200) return;
-      setSpWrapPos({ moveX: -200, touchX: 0, startPos: 0, touch: false });
+      if(wrapPos.moveX === -200 || (e.touches[0].clientX - wrapPos.touchX) <= -200) return;
+      setWrapPos({ moveX: -200, touchX: 0, startPos: 0, touch: false });
     }
   }
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -113,7 +111,7 @@ export default () => {
         <Box>
           <div>
             <Wrap
-              marginLeft={isMobile ? spWrapPos.moveX : wrapPos.moveX}
+              marginLeft={wrapPos.moveX}
               onMouseDown={e => dragStart(e)}
               onMouseMove={e => dragging(e)}
               onMouseLeave={e => droped(e)}
