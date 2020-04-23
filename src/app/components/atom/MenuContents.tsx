@@ -95,4 +95,5 @@ const Qualification = styled.div`
 
 const Icon = styled.img`
   width: 20%;
+  height: 20%;
 `;
