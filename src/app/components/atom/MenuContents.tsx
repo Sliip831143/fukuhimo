@@ -6,28 +6,32 @@ export default () => {
   return (
     <Contents>
       <About>
-        <p>福路</p>
-        <p>Probably, Web Developer.</p>
+        <div>
+          <span>福路</span>
+        </div>
+        <div>
+          <span>Probably, Web Developer.</span>
+        </div>
       </About>
       <Link>
-        <a href="https://twitter.com/fukuhimo">
+        <a href="https://twitter.com/fukuhimo" target="_blank">
           <Icon src="/twitter.png" />
         </a>
-        <a href="https://github.com/Sliip831143">
+        <a href="https://github.com/Sliip831143" target="_blank">
           <Icon src="/github.png" />
         </a>
-        <a href="https://www.pixiv.net/users/3751055">
+        <a href="https://www.pixiv.net/users/3751055" target="_blank">
           <Icon src="/pixiv.png" />
         </a>
       </Link>
       <Qualification>
-        <a href="https://github.com/gatsbyjs">
+        <a href="https://github.com/gatsbyjs" target="_blank">
           <Icon src="gatsby.png" />
         </a>
-        <a href="https://html5exam.jp/outline/lv1.html">
+        <a href="https://html5exam.jp/outline/lv1.html" target="_blank">
           <Icon src="htmlpro1.gif" />
         </a>
-        <a href="https://html5exam.jp/outline/lv2.html">
+        <a href="https://html5exam.jp/outline/lv2.html" target="_blank">
           <Icon src="htmlpro2.gif" />
         </a>
       </Qualification>
@@ -36,24 +40,27 @@ export default () => {
 };
 
 const Contents = styled.div`
-  font-size: 1vw;
   height: 100%;
   padding: 10% 0;
 `;
 
 const About = styled.div`
-  > p {
+  font-size: 1.5vw;
+  > div {
     display: flex;
     justify-content: center;
     margin: 0;
     padding-bottom: 9vh;
+    > span:first-child {
+      border-bottom: 5px dotted #DCDCDC;
+    }
     @media(max-width: 480px) {
       padding-bottom: 3vh;
     }
     &:first-child {
       padding-bottom: 0.5rem;
       font-weight: bold;
-      font-size: 2vw;
+      font-size: 3vw;
       @media(max-width: 480px) {
         padding-bottom: 0.25rem;
       }
