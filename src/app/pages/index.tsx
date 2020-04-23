@@ -34,6 +34,10 @@ export default () => {
     }
   }
   const droped = e => {
+    if(wrapPos.moveX === -200 && e.clientX === wrapPos.touchX ) {
+      setWrapPos({...wrapPos, touch: false});
+      return;
+    }
     if(!wrapPos.touch || e.clientX === wrapPos.touchX) return;
     if(wrapPos.touchX > e.clientX) {
       setWrapPos({ moveX: -200, touchX: 0, startPos: 0, touch: false });
@@ -135,7 +139,7 @@ export default () => {
                 </div>
               </TitleBox>
               <MenuBox>
-                <MenuContents />
+                <MenuContents langIdx={langIdx} />
               </MenuBox>
             </Wrap>
           </div>
@@ -176,6 +180,7 @@ const Wrap = styled.div<{ marginLeft: number }>`
   display: flex;
   margin-left: ${({ marginLeft }) => marginLeft }%;
   cursor: grab;
+  user-select: none;
 `;
 
 const TitleBox = styled.div`

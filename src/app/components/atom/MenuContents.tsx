@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default () => {
+const name = ['福路', '福路', 'FUKUJI'];
+const job = ['Probably, Web Developer.', '也许吧, 网页开发人员。', 'Probably, Web Developer.'];
+
+export default (langIdx) => {
 
   return (
     <Contents>
       <About>
         <div>
-          <span>福路</span>
+          <span>{name[langIdx['langIdx']]}</span>
         </div>
         <div>
-          <span>Probably, Web Developer.</span>
+          <span>{job[langIdx['langIdx']]}</span>
         </div>
       </About>
       <Link>
